@@ -1,0 +1,9 @@
+ import { setRequestConfig } from '@/utils/request';
+ import { http } from '@/uni_modules/uview-plus'
+// 调用setRequestConfig函数进行请求配置
+setRequestConfig();
+// 发起登录请求   post请求
+export const requestLogin = (data) => http.post('/login', data);
+
+//获取个人中心信息  get请求
+export const requestUserInfo = () => http.get('/tenant/getAll')
