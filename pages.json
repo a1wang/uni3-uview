@@ -40,8 +40,8 @@
 					"style": {
 						"navigationBarTitleText": "分包页面one"
 					}
-				},
-			],
+				}
+			]
 		}
 	],
 	"globalStyle": {
