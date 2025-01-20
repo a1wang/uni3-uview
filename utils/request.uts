@@ -1,0 +1,53 @@
+import BASE_URL from '@/utils/env.uts' //引入接口共用地址
+import { useSystemStore } from '@/store/system' //引入仓库，使用的是pinia
+import { http } from '@/uni_modules/uview-plus'
+export const setRequestConfig = () => {
+  http.setConfig((config) => {
+    /* config 为默认全局配置*/
+    config.baseURL = 
+	"http://localhost:8000"
+	// BASE_URL
+	config.header = {
+		"device": "mobile",
+		"Content-Type": "application/json"
+	}
+    return config
+  })
+  // 请求拦截
+  http.interceptors.request.use(
+    (config) => {
+      let token
+	   = useSystemStore().token
+	 
+      if (token) {
+        config.header["Token"] = token || ""
+		
+		// config.header["Token"] = `Bearer ${token || ""}`
+      }
+      return config
+    },
+    (error) => {
+      return Promise.reject(error)
+    }
+  )
+  // 响应拦截
+  http.interceptors.response.use(
+    (response) => {
+		console.log("响应拦截",response);
+      if (response.data.code == 203) {
+        // 提示重新登录
+        uni.$showMsg('请登录')
+        // useSystemStore().userLogout()
+        setTimeout(() => {
+          uni.switchTab({
+            url: '/pages/my/my'
+          })
+        }, 1000)
+      }
+      return response
+    },
+    (error) => {
+      return Promise.reject(error)
+    }
+  )
+}

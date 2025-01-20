@@ -1,0 +1,5 @@
+- vue3
+- pinia 与 持久化
+- uview-plus
+- request封装
+- 路由守卫

@@ -1,0 +1,18 @@
+import { defineStore } from 'pinia';
+
+export const useSystemStore = defineStore('system', {
+  state: () => ({
+    user:{},  // 当前登录人
+	token:null
+	
+  }),
+  actions: {
+	setUser(value: object){
+		this.user = value
+	},
+	setToken(value: string) {
+		this.token = value;
+	},
+  },
+  unistorage: true,
+});
