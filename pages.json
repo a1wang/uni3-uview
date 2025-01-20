@@ -30,6 +30,20 @@
 			}
 		}
 	],
+	//分包加载配置，此配置为小程序的分包加载机制。
+	"subPackages": [
+		{
+			"root": "pagesA", 
+			"pages": [
+				{
+					"path": "one/one",
+					"style": {
+						"navigationBarTitleText": "分包页面one"
+					}
+				},
+			],
+		}
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

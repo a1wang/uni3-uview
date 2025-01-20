@@ -9,7 +9,9 @@
 		
 		 <up-button type="primary" text="测试" @click="getToken"></up-button>
 	
-		 
+		 <hr>
+		 <up-button type="success" text="去分包页面one" @click="goOne"></up-button>
+
 		 <!-- <ws-text /> -->
 	</view>
 </template>
@@ -30,6 +32,11 @@ const getToken = async () => {
 	console.log('res', res)
 }
 
+const goOne = () => {
+	uni.navigateTo({
+		url: '/pagesA/one/one'
+	})
+}
 </script>
 
 <style>
